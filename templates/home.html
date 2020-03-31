@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="Jumbotron">
+    <div class="overlay-home">
+        <div class="navHeaderBox">
+            <nav style="height: 30%">
+                <a>
+                    cs50 books
+                </a>
+                <a>
+                    Log out
+                </a>
+            </nav>
+            <div>
+                <h3>Welcome to</h3>
+                <h1>
+                    cs50 books
+                </h1>
+                <h3>Search for information and opinions on your favourite books...</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="searchBox">
+    <div class="search">
+        <div class="ui labeled action massive input">
+            <label for="amount" class="ui label light-bg"><i class="book icon"></i></label>
+            <input type="text" class="light-bg" placeholder="Search books...">
+            <button class="ui button dark-bg">Search</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

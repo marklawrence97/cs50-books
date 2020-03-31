@@ -1,0 +1,217 @@
+//Colors
+
+$dark: rgb(195,106,45);
+$med-dark: rgb(226, 194, 117);
+$med-light: rgb(234, 220, 166);
+$light: rgb(244, 244, 244);
+
+$dark-hover: rgba(195,106,45, 0.8);
+$light-hover: rgba(250, 244, 244, 0.8);
+
+$sans-serif: 'Raleway', sans-serif;
+$serif: 'Lora', serif;
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    font-family: $sans-serif;
+    font-weight: 500;
+    background-color: $light;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.light-bg {
+    background-color: $light!important;
+    font-family: $sans-serif!important;
+    color: $dark!important;
+}
+
+.dark-bg {
+    background-color: $dark!important;
+    font-family: $sans-serif!important;
+    color: $light!important;  
+}
+
+.dark-bg:hover {
+    background-color: $dark-hover;
+}
+
+.containerBox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.formBox {
+    margin-top: 5%;
+    color: $dark
+}
+
+// Log in / register page
+
+.first-page-box {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: $light;
+}
+
+h1 {
+    font-family: $serif;
+    font-weight: bold;
+    font-size: 5rem;
+    margin-top: 0%;
+}
+
+h3 {
+    font-family: $serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2rem;
+    margin-top: 0%;
+}
+
+.headerBox {
+    @extend .first-page-box;
+    background-image: url(../static/booklong.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.overlay {
+    @extend .first-page-box;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+}
+
+.loginBox {
+    @extend .first-page-box;
+    background-color: $med-light;
+}
+
+.rounded-button {
+    width: 70%;
+    border: none;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 1% 2px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.log-in {
+    @extend .rounded-button;
+    background-color: $light;
+    color: $dark;
+}
+
+.log-in:hover {
+    background-color: $light-hover;
+}
+
+.sign-up {
+    @extend .rounded-button;
+    background-color: $dark;
+    color: $light;
+}
+
+.sign-up:hover{
+    background-color: $dark-hover;
+}
+
+@media only screen and (max-width: 745px) {
+    .first-page-box, .headerBox, .overlay, .loginBox {
+      width: 100%;
+    }
+    .containerBox {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      height: 170%;
+    }
+  }
+
+  @media only screen and (min-width: 640px) {
+    .formBox {
+        width: 50%!important;
+    }
+  }
+
+  //Home page styling 
+
+  .Jumbotron {
+      height: 100%;
+      width: 100%;
+      background-image: url(../static/library.jpg);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+  }
+
+  .overlay-home {
+    background-color: rgba(0,0,0,0.5);
+    color: $light;
+    padding: 2% 20%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      justify-self: flex-start;
+      width: 100%;
+  }
+
+  a {
+      text-decoration: none;
+      color: $light;
+      font-weight: bold;
+      font-size: 2rem;
+  }
+
+  a:hover {
+      color: $light-hover;
+      cursor: pointer;
+  }
+
+  .navHeaderBox {
+      height: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+
+  .searchBox {
+    width: 80%;
+    margin-top: -63.45px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+  .search {
+      margin-top: 0%;
+      width: 481.26px;
+      height: 20%;
+  }
