@@ -28,8 +28,10 @@ html, body {
     width: 100%;
 }
 
+// Important keyword to override some of semantic UIs CSS properties.
+
 .light-bg {
-    background-color: $light!important;
+    background-color: $med-light!important;
     font-family: $sans-serif!important;
     color: $dark!important;
 }
@@ -72,6 +74,10 @@ h1 {
     font-weight: bold;
     font-size: 5rem;
     margin-top: 0%;
+}
+
+h2 {
+    font-family: $serif;
 }
 
 h3 {
@@ -196,7 +202,7 @@ h3 {
   }
 
   .navHeaderBox {
-      height: 60%;
+      height: 65%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -204,14 +210,15 @@ h3 {
 
   .searchBox {
     width: 80%;
-    margin-top: -63.45px;
+    margin-top: 2%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    border: $dark;
 }
 
   .search {
       margin-top: 0%;
-      width: 481.26px;
+      width: 416.86px;
       height: 20%;
   }

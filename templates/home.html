@@ -23,12 +23,14 @@
     </div>
 </div>
 <div class="searchBox">
-    <div class="search">
-        <div class="ui labeled action massive input">
+    <div class="search" style="border: black;">
+        <div class="ui labeled action huge input">
             <label for="amount" class="ui label light-bg"><i class="book icon"></i></label>
-            <input type="text" class="light-bg" placeholder="Search books...">
+            <input type="text" placeholder="Search books...">
             <button class="ui button dark-bg">Search</button>
         </div>
     </div>
 </div>
+{% include "bookGrid.html" %}
+{% include "footer.html" %}
 {% endblock %}

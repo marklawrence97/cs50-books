@@ -25,7 +25,7 @@ html, body {
 }
 
 .light-bg {
-  background-color: #f4f4f4 !important;
+  background-color: #eadca6 !important;
   font-family: "Raleway", sans-serif !important;
   color: #c36a2d !important;
 }
@@ -77,6 +77,10 @@ h1 {
   font-weight: bold;
   font-size: 5rem;
   margin-top: 0%;
+}
+
+h2 {
+  font-family: "Lora", serif;
 }
 
 h3 {
@@ -208,7 +212,7 @@ a:hover {
 }
 
 .navHeaderBox {
-  height: 60%;
+  height: 65%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -223,7 +227,7 @@ a:hover {
 
 .searchBox {
   width: 80%;
-  margin-top: -63.45px;
+  margin-top: 2%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -233,11 +237,12 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border: #c36a2d;
 }
 
 .search {
   margin-top: 0%;
-  width: 481.26px;
+  width: 416.86px;
   height: 20%;
 }
 /*# sourceMappingURL=style.css.map */
