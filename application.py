@@ -29,6 +29,27 @@ def index():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        try:
+            username = request.form['username']
+            password = request.form['password']
+            if username == "" or password == "":
+                error = "Please enter your username and password"
+                return render_template('loginForm.html', error=error)
+        except:
+            error = "Please enter your username and password"
+            return render_template('loginForm.html', error=error)
+        passwordHash = db.execute("SELECT passwordHash FROM users WHERE (username = :username)", {"username": username}).fetchone()[0]
+        
+        #If password is correct log the user in and redirect to the home page
+        if bcrypt.check_password_hash(passwordHash, password):
+            session["isAuthenticated"] = True
+            return redirect(url_for('home'))
+
+        #If the password is incorrect render the log in form with appropriate error.
+        error = "Your password is incorrect"
+        return render_template('loginForm.html', error=error)
+
     return render_template('loginForm.html')
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -42,7 +63,7 @@ def register():
             email = request.form['email']
             terms = request.form['terms']
             if request.form['pass1'] == request.form['pass2']:
-                password = bcrypt.generate_password_hash(request.form['pass1'])
+                password = bcrypt.generate_password_hash(request.form['pass1']).decode('utf-8')
         except:
             return render_template('registerForm.html', error=error)
         if not password:
@@ -73,10 +94,10 @@ def home():
     if session.get("isAuthenticated"):
         books = db.execute('SELECT * FROM "books" LIMIT 25').fetchall()
         return render_template('home.html', books=books)
-    return render_template('loginForm.html')
+    return redirect(url_for('login'))
 
 @app.route("/book")
 def book():
     if session.get("isAuthenticated"):
         return render_template('book.html')
-    return render_template('loginForm.html')
+    return redirect(url_for('login'))

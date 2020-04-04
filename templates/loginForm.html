@@ -9,16 +9,26 @@
     <form class="ui form" method="POST">
     <div class="field">
         <label>Username:</label>
-        <input type="text" name="first-name" placeholder="First Name">
+        <input type="text" name="username" placeholder="First Name">
     </div>
     <div class="field">
         <label>Password:</label>
-        <input type="text" name="last-name" placeholder="Last Name">
+        <input type="password" name="password" placeholder="Last Name">
     </div>
     <div class="center">
         <button type="submit" class="ui sign-up" style="border: black;">Log in</button>
         <a class="follow-link" href={{url_for('register')}}>Don't have an account? Sign up instead!</a>
     </div>
     </form>
+    {% if error %}
+        <div class="ui error message">
+            <div class="header">
+                There was an error with your submission!
+            </div>
+            <ul class="list">
+                {{ error }}
+            </ul>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}
