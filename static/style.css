@@ -72,11 +72,20 @@ html, body {
   color: #f4f4f4;
 }
 
-h1 {
+h1, .header-link {
   font-family: "Lora", serif;
   font-weight: bold;
   font-size: 5rem;
   margin-top: 0%;
+}
+
+.header-link {
+  color: #c36a2d;
+  text-decoration: none;
+}
+
+.header-link:hover {
+  color: rgba(195, 106, 45, 0.8);
 }
 
 h2 {

@@ -76,6 +76,16 @@ h1 {
     margin-top: 0%;
 }
 
+.header-link {
+    @extend h1;
+    color: $dark;
+    text-decoration: none;
+}
+
+.header-link:hover {
+    color: $dark-hover
+}
+
 h2 {
     font-family: $serif;
 }

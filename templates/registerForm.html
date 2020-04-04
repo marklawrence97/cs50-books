@@ -1,52 +1,56 @@
 {% extends "index.html" %}
 {% block body %}
 <div class="ui container formBox">
-    <div class="center">
-        <h1>
+    <div style="height: 20%; margin-bottom: 5%;" class="center">
+        <a class="header-link" href={{url_for('index')}}>
             cs50 books
-        </h1>
+        </a>
     </div>
-    <form class="ui form" autocomplete="on">
+    <form class="ui form" autocomplete="on" method="POST">
     <div class="field">
         <label>Username:</label>
-        <input type="text" name="username" placeholder="Username">
+        <input type="text" name="username" placeholder="Username" required>
     </div>
     <div class="field">
         <label>First Name</label>
-        <input type="text" name="fname" placeholder="First name">
+        <input type="text" name="fname" placeholder="First name" required>
     </div>
     <div class="field">
         <label>Last Name</label>
-        <input type="text" name="lname" placeholder="Last name">
+        <input type="text" name="lname" placeholder="Last name" required>
     </div>
     <div class="field">
             <label>Email:</label>
-            <input type="email" name="email" placeholder="Email:">
+            <input type="email" name="email" placeholder="Email:" required>
         </div>
     <div class="field">
         <label>Password:</label>
-        <input type="password" name="password" placeholder="Password:">
+        <input type="password" name="pass1" placeholder="Password:" required>
     </div>
     <div class="field">
         <label>Repeat Password:</label>
-        <input type="password" name="password" placeholder="Repeat password">
+        <input type="password" name="pass2" placeholder="Repeat password" required>
     </div>
     <div class="field">
         <div class="ui checkbox">
-            <input type="checkbox" tabindex="0" class="hidden">
+            <input type="checkbox" tabindex="0" name="terms" required>
             <label>I agree to the Terms and Conditions</label>
         </div>
     </div>
-    <div class="field">
-        <div class="ui checkbox">
-            <input type="checkbox" tabindex="0" class="hidden">
-            <label>I would like to recieve marketing communications</label>
-        </div>
-    </div>
     <div class="center">
-        <button class="ui sign-up" style="border: black;">Register</button>
+        <button type="submit" class="ui sign-up" style="border: black;">Register</button>
         <a class="follow-link" href={{url_for('login')}}>Already signed up? Log in instead!</a>
     </div>
     </form>
+    {% if error %}
+        <div class="ui error message">
+            <div class="header">
+                There was an error with your submission!
+            </div>
+            <ul class="list">
+                {{ error }}
+            </ul>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}

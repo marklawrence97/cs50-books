@@ -4,37 +4,17 @@
 
     <!-- Filter List -->
     <div class="row">
-        <div class="four wide column">
-            <h2>Order by:</h2>
-            <div class="ui form">
-                <div class="grouped fields">
-                    <div class="field">
-                        <div class="ui checkbox">
-                            <input type="radio" name="example" />
-                            <label>Date (High - Low)</label>
-                        </div>
-                    </div> 
-                    <div class="field">
-                        <div class="ui checkbox">
-                            <input type="radio" name="example" />
-                            <label>Date (Low - High)</label>
-                        </div>
-                    </div>   
-                </div>
-            </div>
-        </div>                      
-
 
         <!-- Scroll Div -->
 
-        <div class="twelve wide column">
+        <div class="sixteen wide column">
 
             <div style="overflow: scroll; height:600px">
                 
                 <!-- Card -->
-
+                {% for book in books %}
                 <div id="bookList">
-                    <div class="ui raised segment" id="flightList">
+                    <div class="ui raised segment" id="flightList" style="margin-bottom: 1rem; margin-right: 1rem;">
                         <div class="ui internally celled grid">
                             <div class="row">
                                 <div class="four wide column center aligned">
@@ -42,13 +22,15 @@
                                     <p>4.5/5 (504 ratings)</p>                   
                                 </div>
                                 <div class="twelve wide column">
-                                    <h2>The Dark Is Rising</h2>
-                                    <h4>Susan Cooper, 1973</h4>
+                                    <h2>{{book.title}}</h2>
+                                    <h5>Written by {{book.author}} in {{book.year}}</h5>
+                                    <a class="follow-link">See reviews...</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
 
                 <!-- end card -->
             </div>

@@ -1,12 +1,12 @@
 {% extends "index.html" %}
 {% block body %}
 <div class="ui container formBox">
-    <div class="center">
-        <h1>
+    <div style="height: 20%; margin-bottom: 5%;" class="center">
+        <a class="header-link" href={{url_for('index')}}>
             cs50 books
-        </h1>
+        </a>
     </div>
-    <form class="ui form">
+    <form class="ui form" method="POST">
     <div class="field">
         <label>Username:</label>
         <input type="text" name="first-name" placeholder="First Name">
@@ -16,7 +16,7 @@
         <input type="text" name="last-name" placeholder="Last Name">
     </div>
     <div class="center">
-        <button class="ui sign-up" style="border: black;">Log in</button>
+        <button type="submit" class="ui sign-up" style="border: black;">Log in</button>
         <a class="follow-link" href={{url_for('register')}}>Don't have an account? Sign up instead!</a>
     </div>
     </form>
