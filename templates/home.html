@@ -5,15 +5,15 @@
     <div class="overlay-home">
         <div class="navHeaderBox">
             <nav style="height: 30%">
-                <a>
+                <a href={{url_for('home')}}>
                     cs50 books
                 </a>
-                <a>
+                <a href={{url_for('logout')}}>
                     Log out
                 </a>
             </nav>
             <div>
-                <h3>Welcome to</h3>
+                <h3>Hi {{user}}, welcome to</h3>
                 <h1>
                     cs50 books
                 </h1>

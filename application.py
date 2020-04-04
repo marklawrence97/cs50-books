@@ -39,10 +39,10 @@ def login():
         except:
             error = "Please enter your username and password"
             return render_template('loginForm.html', error=error)
-        passwordHash = db.execute("SELECT passwordHash FROM users WHERE (username = :username)", {"username": username}).fetchone()[0]
-        
+        user = db.execute("SELECT * FROM users WHERE (username = :username)", {"username": username}).fetchone()      
         #If password is correct log the user in and redirect to the home page
-        if bcrypt.check_password_hash(passwordHash, password):
+        if bcrypt.check_password_hash(user[2], password):
+            session['first-name'] = user[4]
             session["isAuthenticated"] = True
             return redirect(url_for('home'))
 
@@ -86,6 +86,7 @@ def register():
 
         #If successful log the user in and redirect to the home page.
         session["isAuthenticated"] = True
+        session['first-name'] = first_name
         return redirect(url_for('home'))
     return render_template('registerForm.html')
 
@@ -93,7 +94,7 @@ def register():
 def home():
     if session.get("isAuthenticated"):
         books = db.execute('SELECT * FROM "books" LIMIT 25').fetchall()
-        return render_template('home.html', books=books)
+        return render_template('home.html', books=books, user=session.get("first-name"))
     return redirect(url_for('login'))
 
 @app.route("/book")
@@ -101,3 +102,8 @@ def book():
     if session.get("isAuthenticated"):
         return render_template('book.html')
     return redirect(url_for('login'))
+
+@app.route("/logout")
+def logout():
+    session["isAuthenticated"] = False
+    return redirect(url_for('index'))
