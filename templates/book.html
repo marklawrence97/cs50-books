@@ -1,0 +1,110 @@
+{% extends "index.html" %}
+
+{% block body %}
+{% include "nav.html" %}
+    <div class="ui internally celled grid book">
+        <div class="row">
+            <div class="four wide column center aligned">
+                <img src="../static/placeholder.jpg" alt="placeholder"/>
+                <p>4.5/5 (504 ratings)</p>                   
+            </div>
+            <div class="twelve wide column center">
+                <h2>The Dark Is Rising</h2>
+                <h4>Susan Cooper, 1973</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="four wide column center aligned">
+                <p>Leave a review...</p>
+            </div>
+            <div class="twelve wide column">
+                <div class="ui form">
+                    <div class="field" style="color: rgb(195,106,45)">
+                        <label>Rate the book out of 5:</label>
+                    </div>
+                    <div class="inline fields">
+                        <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="rating" tabindex="0">
+                            <label>1</label>
+                        </div>
+                        </div>
+                        <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="rating" tabindex="0">
+                            <label>2</label>
+                        </div>
+                        </div>
+                        <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="rating" tabindex="0">
+                            <label>3</label>
+                        </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="rating" tabindex="0">
+                                <label>4</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="rating" tabindex="0">
+                                <label>5</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Add a comment:</label>
+                        <textarea rows="3"></textarea>
+                    </div>
+                    <div class="ui labeled icon buttons">
+                        <button class="ui button" style="background-color: rgb(234, 220, 166);">
+                            <i class="edit icon" style="background-color: rgb(195,106,45);"></i>
+                            Create review
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="four wide column">
+                <div class="ui cards">
+                    <div class="card">
+                        <div class="content">
+                        <div class="header">Mark Lawrence</div>
+                        <div class="description">
+                            This review was left on 03/04/2020.
+                        </div>
+                        </div>
+                    </div>
+                </div>                 
+            </div>
+            <div class="twelve wide column center">
+                <h2>4 out of 5 stars.</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel hic saepe, possimus ipsa nulla soluta vero in asperiores, rerum fugit tempore tempora quisquam odio, eaque aspernatur atque numquam doloribus cum!</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab amet quibusdam iusto ipsa rem aliquam porro, facilis praesentium accusantium non aperiam maxime nihil eaque at vero quae quod? Architecto, nemo?</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="four wide column">
+                <div class="ui cards">
+                    <div class="card">
+                        <div class="content">
+                        <div class="header">George Payne</div>
+                        <div class="description">
+                            This review was left on 02/04/2020.
+                        </div>
+                        </div>
+                    </div>
+                </div>                 
+            </div>
+            <div class="twelve wide column center">
+                <h2>3 out of 5 stars.</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel hic saepe, possimus ipsa nulla soluta vero in asperiores, rerum fugit tempore tempora quisquam odio, eaque aspernatur atque numquam doloribus cum!</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab amet quibusdam iusto ipsa rem aliquam porro, facilis praesentium accusantium non aperiam maxime nihil eaque at vero quae quod? Architecto, nemo?</p>
+            </div>
+        </div>
+    </div>
+{% include "footer.html"%}
+{% endblock %}
