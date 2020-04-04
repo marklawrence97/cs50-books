@@ -36,3 +36,7 @@ def register():
 @app.route("/home")
 def home():
     return render_template('home.html')
+
+@app.route("/book")
+def book():
+    return render_template('book.html')
