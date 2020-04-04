@@ -113,6 +113,7 @@ h3 {
   padding: 15px 25px;
   text-align: center;
   text-decoration: none;
+  font-size: 1.2rem;
   display: inline-block;
   margin: 1% 2px;
   cursor: pointer;
@@ -136,6 +137,15 @@ h3 {
 
 .sign-up:hover {
   background-color: rgba(195, 106, 45, 0.8);
+}
+
+.follow-link {
+  color: #c36a2d;
+  font-size: 1rem;
+}
+
+.follow-link:hover {
+  color: rgba(195, 106, 45, 0.8);
 }
 
 @media only screen and (max-width: 745px) {
