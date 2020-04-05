@@ -1,4 +1,5 @@
 import os
+import requests
 
 from flask import Flask, session, render_template, request, redirect, url_for, session
 from flask_bcrypt import Bcrypt
@@ -6,7 +7,7 @@ from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from datetime import datetime
-from json import dumps
+from json import dumps, loads
 
 
 app = Flask(__name__)
@@ -24,6 +25,8 @@ Session(app)
 engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
+#Configure API Keys 
+goodread_key = os.getenv("GOODREAD_KEY")
 
 @app.route("/")
 def index():
@@ -127,6 +130,11 @@ def home():
 
 @app.route("/book/<string:isbn>", methods=['GET', 'POST'])
 def book(isbn):
+    res=requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": goodread_key, "isbns": isbn})
+    goodread_data = res.json()
+
+    average_rating = goodread_data["books"][0]["average_rating"]
+
     if session.get("isAuthenticated") and request.method == "POST":
         #Check there exists a book with the given isbn
         book = db.execute(
@@ -157,7 +165,7 @@ def book(isbn):
             comment = request.form["comment"]
         except:
             review_error = "You must include both a rating and a comment in your review!"
-            return render_template("book.html", book=book, review_error=review_error, user_review=user_review, reviews=reviews)
+            return render_template("book.html", book=book, review_error=review_error, user_review=user_review, reviews=reviews, average_rating=average_rating)
 
         if not user_review:
             #If the user has no review then give option to create a new review 
@@ -187,7 +195,7 @@ def book(isbn):
         if not reviews:
             reviews = []
 
-        return render_template("book.html", book=book, reviews=reviews, user_review=user_review)
+        return render_template("book.html", book=book, reviews=reviews, user_review=user_review, average_rating=average_rating)
 
     if session.get("isAuthenticated"):
         #Get data on the book
@@ -212,7 +220,7 @@ def book(isbn):
         except:
             reviews = []
         #Get review of current user on that book
-        return render_template("book.html", book=book, reviews=reviews, user_review=user_review)
+        return render_template("book.html", book=book, reviews=reviews, user_review=user_review, average_rating=average_rating)
     return redirect(url_for("login"))
 
 
