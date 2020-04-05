@@ -6,6 +6,7 @@ from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from datetime import datetime
+from json import dumps
 
 
 app = Flask(__name__)
@@ -221,3 +222,28 @@ def logout():
     session["first-name"] = None
     session["user_id"] = None
     return redirect(url_for("index"))
+
+@app.route("/api/<string:isbn>")
+def api(isbn):
+    book = db.execute(
+        "SELECT books.title AS title, books.author AS author, books.year AS year, books.isbn AS isbn, ROUND(AVG(rating), 1) AS avg_rating, COUNT(review_id) AS review_count FROM books JOIN reviews ON (reviews.book_id = books.book_id) WHERE(books.isbn = :isbn) GROUP BY books.book_id", {"isbn": isbn}
+    ).fetchone()
+
+    if not book:
+        content = {"error": "404, no book with that isbn found"}
+        json_content = dumps(content)
+        return json_content
+
+    content = {
+        "title": book[0],
+        "author": book[1],
+        "year": book[2].strftime('%Y'),
+        "isbn": book[3],
+        "review_count": str(book[5]),
+        "average_score": str(book[4])
+    }
+    
+    json_content = dumps(content)
+
+    return json_content
+
