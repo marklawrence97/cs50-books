@@ -12,4 +12,4 @@ This project is hosted by Heroku at:
 
 https://mark-cs50-books.herokuapp.com/
 
-I am using a free dyno to host it so will likely to a short while to start up!
+I am using a free dyno to host, this dyno sleeps after 30 minutes of inactivity - so will likely to a short while to start up!
