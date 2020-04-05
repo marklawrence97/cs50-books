@@ -39,16 +39,21 @@ def login():
         except:
             error = "Please enter your username and password"
             return render_template('loginForm.html', error=error)
-        user = db.execute("SELECT * FROM users WHERE (username = :username)", {"username": username}).fetchone()      
-        #If password is correct log the user in and redirect to the home page
-        if bcrypt.check_password_hash(user[2], password):
-            session['first-name'] = user[4]
-            session["isAuthenticated"] = True
-            return redirect(url_for('home'))
 
-        #If the password is incorrect render the log in form with appropriate error.
-        error = "Your password is incorrect"
-        return render_template('loginForm.html', error=error)
+        #Check if there exists a user with that username:
+        user = db.execute("SELECT * FROM users WHERE (username = :username)", {"username": username}).fetchone()  
+        if user:    
+            #If password is correct log the user in and redirect to the home page
+            if bcrypt.check_password_hash(user[2], password):
+                session['first-name'] = user[4]
+                session["isAuthenticated"] = True
+                return redirect(url_for('home'))
+
+            #If the password is incorrect render the log in form with appropriate error.
+            error = "Your password is incorrect"
+            return render_template('loginForm.html', error=error)
+        error = "There is no account with that username, check for a mistype or register instead!"
+        return render_template('loginForm.html', error=error)   
 
     return render_template('loginForm.html')
 
@@ -90,8 +95,12 @@ def register():
         return redirect(url_for('home'))
     return render_template('registerForm.html')
 
-@app.route("/home")
+@app.route("/home", methods=["GET", "POST"])
 def home():
+    if request.method == "POST" and session.get("isAuthenticated"):
+        query = request.form['query'].lower()
+        books = db.execute('SELECT * FROM "books" WHERE LOWER(books.title) LIKE :query OR LOWER(books.author) LIKE :query OR books.isbn = :query', {"query": '%' + query + '%'}).fetchall()
+        return render_template('home.html', books=books, user=session.get("first-name"))
     if session.get("isAuthenticated"):
         books = db.execute('SELECT * FROM "books" LIMIT 25').fetchall()
         return render_template('home.html', books=books, user=session.get("first-name"))

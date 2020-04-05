@@ -24,11 +24,13 @@
 </div>
 <div class="searchBox">
     <div class="search" style="border: black;">
-        <div class="ui labeled action huge input">
-            <label for="amount" class="ui label light-bg"><i class="book icon"></i></label>
-            <input type="text" placeholder="Search books...">
-            <button class="ui button dark-bg">Search</button>
-        </div>
+        <form method="POST">
+            <div class="ui labeled action huge input">
+                    <label for="query" class="ui label light-bg"><i class="book icon"></i></label>
+                    <input type="text" name="query" placeholder="Search books...">
+                    <button type="submit" class="ui button dark-bg">Search</button>
+            </div>
+        </form>
     </div>
 </div>
 {% include "bookGrid.html" %}
