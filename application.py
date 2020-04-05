@@ -255,3 +255,9 @@ def api(isbn):
 
     return json_content
 
+@app.route("/api/")
+def api_info():
+    text = "The database can also be searched by making a request to /api/:isbn "
+    text += "where isbn is the isbn number of the book you want more information about."
+    text += "The response will be in JSON format."
+    return render_template('api.html', text=text)

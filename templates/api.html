@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% include "nav.html" %}
+
+{% block body %}
+
+<div class="ui container" style="margin: 2% 20%">
+    <h1>API Access</h1>
+    <p>
+        {{text}}
+    </p>
+    <a style="color: black; margin-top: 1rem; font-size: 1.5rem;" href={{url_for('api', isbn="0380795272")}}>Click here for an example!</a>
+</div>
+
+<div class="ui" style="position: fixed; bottom: 0; width: 100%">
+    <div class="ui equal width internally celled padded grid" style="background-color: rgb(195,106,45); padding: 20px 20%;">
+        <div class="row">
+            <div class="padded column" style="color: #fafafa">
+                    <a style="font-size: 1rem; font-weight: normal; margin-bottom: 1em;" href={{url_for('api_info')}}>API acess</a>
+            </div>
+            <div class="padded column" style="display: flex; flex-direction: column; align-items: flex-end; color: #fafafa">
+                <a style="font-size: 1rem; font-weight: normal; margin-bottom: 1em;" href="https://docs.cs50.net/web/2020/x/projects/1/project1.html">cs50 project description</a>
+                <a style="font-size: 1rem; font-weight: normal;" href="https://github.com/marklawrence97/cs50-books">Github source code</a>
+            </div>
+        </div>
+    </div>          
+</div>
+
+{% endblock %}
+
