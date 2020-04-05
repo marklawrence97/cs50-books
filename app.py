@@ -80,7 +80,11 @@ def register():
                 )
         except:
             return render_template("registerForm.html", error=error)
-        if not password:
+        try:
+            if not password:
+                error = "Your passwords do not match!"
+                return render_template("registerForm.html", error=error)
+        except:
             error = "Your passwords do not match!"
             return render_template("registerForm.html", error=error)
         error = "This is embarrasing...our server is down please try again soon someone is fixing it!!"
