@@ -109,6 +109,12 @@ def register():
 
         db.commit()
 
+        #Find user ID to log them in
+
+        user = db.execute(
+            "SELECT * FROM users WHERE (username = :username)", {"username": username}
+        ).fetchone()
+
         # If successful log the user in and redirect to the home page.
         session["isAuthenticated"] = True
         session["first-name"] = first_name
