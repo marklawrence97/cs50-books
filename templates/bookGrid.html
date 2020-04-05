@@ -23,8 +23,8 @@
                                 </div>
                                 <div class="twelve wide column">
                                     <h2>{{book.title}}</h2>
-                                    <h5>Written by {{book.author}} in {{book.year}}</h5>
-                                    <a class="follow-link">See reviews...</a>
+                                    <h5>Written by {{book.author}} in {{book.year.strftime('%Y') }}</h5>
+                                    <a href={{url_for('book', isbn=book.isbn)}} class="follow-link">See reviews...</a>
                                 </div>
                             </div>
                         </div>
